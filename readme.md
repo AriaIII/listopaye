@@ -72,7 +72,7 @@ Out of the box, this docker-compose is designed for a Linux operating system, pr
 
 ## Test the project
 
-To test the project, you can use Postman or other application. 
+To test the project, you can use Postman (https://www.postman.com/) or other application. 
 
 The first API request is 127.0.0.1:9000/period/declare (method : POST)
 
