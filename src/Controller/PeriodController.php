@@ -23,10 +23,10 @@ class PeriodController extends AbstractController
             return $this->json($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }
 
-        $type = $this->cleanData($data->type);
-        $startdate = new \DateTimeImmutable($this->cleanData($data->startdate));
-        $enddate = new \DateTimeImmutable($this->cleanData($data->enddate));
-        $employee = $this->cleanData($data->employee);
+        $type = $data->type;
+        $startdate = new \DateTimeImmutable($data->startdate);
+        $enddate = new \DateTimeImmutable($data->enddate);
+        $employee = $data->employee;
 
         $period = $periodModel->create($type, $startdate, $enddate, $employee);
 
@@ -58,13 +58,6 @@ class PeriodController extends AbstractController
         if ((date('d-m-Y', strtotime($enddate)) !== $enddate) || (date('d-m-Y', strtotime($startdate)) !== $startdate)) {
             throw new \UnexpectedValueException("The dates should be formatted like d-m-Y");
         }
-    }
-
-    private function cleanData(mixed $data): bool
-    {
-            $data = trim($data);
-            $data = stripslashes($data);
-            return htmlspecialchars($data);
     }
 
 }
