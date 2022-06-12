@@ -28,7 +28,7 @@ class PeriodModel
 
     public function checkIfPeriodIsOnOneMonth(Period $period): bool
     {
-        // on part ici du principe que la période d'usage correspond bien à un mois calendaire
+        // it is assumed that the period of use corresponds to a calendar month
         return $period->getStartdate()->format('Y') === $period->getEnddate()->format('Y') && $period->getStartdate()->format('m') === $period->getEnddate()->format('m');
     }
 

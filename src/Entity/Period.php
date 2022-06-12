@@ -25,6 +25,7 @@ class Period
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $monthlyPeriod;
 
+    // this could be a relation with the entity employee to link vacation periods with the good employee
     #[ORM\Column(type: 'integer')]
     private int $employee;
 
