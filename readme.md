@@ -13,6 +13,7 @@ Clone the project
 ```bash
 git@github.com:AriaIII/listopaye.git
 ```
+Go to the project directory
 
 Run the docker-compose
 
