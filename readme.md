@@ -45,7 +45,7 @@ Create an account (identical to your local session)
 
 *Your application is available at http://127.0.0.1:9000*
 
-If you need a database, modify the .env file like this example:
+There is a database :
 
 ```yaml
   DATABASE_URL="postgresql://symfony:ChangeMe@database:5432/app?serverVersion=13&charset=utf8"
@@ -77,7 +77,7 @@ To test the project, you can use Postman (https://www.postman.com/) or other app
 
 The first API request is 127.0.0.1:9000/period/declare (method : POST)
 
-You send a vacation period which must have json format like this :
+You send a vacation period which must have json format like this (I suppose employees declare full days) :
 
 ```json
 {

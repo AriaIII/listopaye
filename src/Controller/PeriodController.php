@@ -23,14 +23,15 @@ class PeriodController extends AbstractController
             return $this->json($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }
 
-        $type = $data->type;
-        $startdate = new \DateTimeImmutable($data->startdate);
-        $enddate = new \DateTimeImmutable($data->enddate);
-        $employee = $data->employee;
+        $type = $this->cleanData($data->type);
+        $startdate = new \DateTimeImmutable($this->cleanData($data->startdate));
+        $enddate = new \DateTimeImmutable($this->cleanData($data->enddate));
+        $employee = $this->cleanData($data->employee);
 
         $period = $periodModel->create($type, $startdate, $enddate, $employee);
 
         if ($periodModel->checkIfPeriodIsOnOneMonth($period)) {
+            // I have decided to create a database. The registration could have been done in a file.
             $periodModel->register($period);
         } else {
             $periods = $periodModel->cutPeriodIntoCalendarMonths($period);
@@ -60,4 +61,10 @@ class PeriodController extends AbstractController
         }
     }
 
+    private function cleanData(mixed $data): string
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        return htmlspecialchars($data);
+    }
 }
